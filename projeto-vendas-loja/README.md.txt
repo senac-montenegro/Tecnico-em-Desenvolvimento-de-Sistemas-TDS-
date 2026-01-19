@@ -12,9 +12,9 @@ Todos os dados utilizados são **fictícios**.
 ## 🎯 Objetivos
 
 - Simular um banco de dados relacional para controle de vendas;
-- Aplicar conceitos de **DDL, DML, DQL e Views**;
+- Aplicar conceitos de DDL, DML, DQL e Views;
 - Organizar scripts SQL seguindo boas práticas;
-- Integrar o banco de dados com o **Power BI**;
+- Integrar o banco de dados com o Power BI;
 - Disponibilizar o projeto como material didático e portfólio técnico.
 
 ---
@@ -33,7 +33,6 @@ projeto-loja-hardware/
 │ └── Relatorio_Vendas.pbix
 ├── docs/
 │ └── Relatorio_Projeto_Loja_Hardware_ABNT.docx
-├── .gitignore
 └── README.md
 
 
