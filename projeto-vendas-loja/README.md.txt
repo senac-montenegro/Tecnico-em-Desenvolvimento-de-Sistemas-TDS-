@@ -56,32 +56,32 @@ Foram criadas **views SQL** para facilitar consultas e padronizar dados para an�
 
 ## 🧾 Organização dos Scripts SQL
 
-- **01_criacao_tabelas.sql** – Criação da estrutura do banco (DDL)  
-- **02_inserts.sql** – Inserção de dados fictícios (DML)  
-- **03_consultas.sql** – Consultas de análise (DQL)  
-- **04_views_sql_vendas.sql** – Criação de views analíticas  
+- 01_criacao_tabelas.sql – Criação da estrutura do banco (DDL)  
+- 02_inserts.sql – Inserção de dados fictícios (DML)  
+- 03_consultas.sql – Consultas de análise (DQL)  
+- 04_views_sql_vendas.sql – Criação de views analíticas  
 
 ---
 
 ## 🛠 Tecnologias Utilizadas
 
-- **PostgreSQL** – Sistema Gerenciador de Banco de Dados  
-- **SQL** – Criação, manipulação e consulta de dados  
-- **Views SQL** – Organização das análises  
-- **Power BI** – Relatórios e dashboards  
-- **GitHub** – Versionamento e publicação  
+- PostgreSQL – Sistema Gerenciador de Banco de Dados  
+- SQL – Criação, manipulação e consulta de dados  
+- Views SQL – Organização das análises  
+- Power BI – Relatórios e dashboards  
+- GitHub – Versionamento e publicação  
 
 ---
 
 ## 📈 Relatório de Vendas (Power BI)
 
-Na pasta **relatorio_vendas** está disponível o arquivo **Relatorio_Vendas.pbix**, contendo análises visuais como:
+Na pasta 'relatorio_vendas' está disponível o arquivo 'Relatorio_Vendas.pbix', contendo análises visuais como:
 
 - Faturamento;
 - Desempenho de produtos;
 - Vendas por cliente e período.
 
-As análises utilizam dados provenientes das **views criadas no PostgreSQL**.
+As análises utilizam dados provenientes das 'views criadas no PostgreSQL'.
 
 ---
 
