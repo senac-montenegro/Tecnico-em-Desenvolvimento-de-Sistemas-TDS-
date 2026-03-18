@@ -1,0 +1,104 @@
+SELECT 
+    a.id_agendamento,
+    a.Data_Hora_Consulta,
+    a.Status_Agendamento,
+    m.Nome_Medico,
+    p.Nome_Pacientes
+FROM Agendamentos a
+JOIN Medicos m ON a.id_medico = m.id_medico
+JOIN Pacientes p ON a.id_paciente = p.id_paciente;
+
+
+
+SELECT 
+    a.id_agendamento,
+    a.Data_Hora_Consulta,
+    a.Status_Agendamento,
+    m.Nome_Medico,
+    e.Nome_Especialidades,
+    p.Nome_Pacientes,
+    c.Nome_Consultorios,
+    pr.Nome_Procedimentos,
+    pr.Valor_Procedimentos
+FROM Agendamentos a
+JOIN Medicos m ON a.id_medico = m.id_medico
+JOIN Especialidades e ON m.id_especialidade = e.id_especialidade
+JOIN Pacientes p ON a.id_paciente = p.id_paciente
+JOIN Consultorios c ON a.consultorios_idconsultorios = c.idconsultorios
+JOIN Procedimentos pr ON a.procedimentos_idprocedimentos = pr.idprocedimentos;
+
+
+
+SELECT 
+    SUM(pr.Valor_Procedimentos) AS Faturamento_Total
+FROM Agendamentos a
+JOIN Procedimentos pr 
+    ON a.procedimentos_idprocedimentos = pr.idprocedimentos
+WHERE a.Status_Agendamento = 'REALIZADO';
+
+
+SELECT 
+    m.Nome_Medico,
+    SUM(pr.Valor_Procedimentos) AS Total_Faturado
+FROM Agendamentos a
+JOIN Medicos m ON a.id_medico = m.id_medico
+JOIN Procedimentos pr 
+    ON a.procedimentos_idprocedimentos = pr.idprocedimentos
+WHERE a.Status_Agendamento = 'REALIZADO'
+GROUP BY m.Nome_Medico
+ORDER BY Total_Faturado DESC;
+
+
+SELECT 
+    a.id_agendamento,
+    a.Data_Hora_Consulta,
+    a.Status_Agendamento,
+    m.Nome_Medico,
+    e.Nome_Especialidades,
+    p.Nome_Pacientes,
+    c.Nome_Consultorios,
+    pr.Nome_Procedimentos,
+    pr.Valor_Procedimentos
+FROM Agendamentos a
+JOIN Medicos m ON a.id_medico = m.id_medico
+JOIN Especialidades e ON m.id_especialidade = e.id_especialidade
+JOIN Pacientes p ON a.id_paciente = p.id_paciente
+JOIN Consultorios c ON a.consultorios_idconsultorios = c.idconsultorios
+JOIN Procedimentos pr ON a.procedimentos_idprocedimentos = pr.idprocedimentos;
+
+
+SELECT 
+    m.Nome_Medico,
+    SUM(pr.Valor_Procedimentos) AS Total_Faturado
+FROM Agendamentos a
+JOIN Medicos m ON a.id_medico = m.id_medico
+JOIN Procedimentos pr 
+    ON a.procedimentos_idprocedimentos = pr.idprocedimentos
+WHERE a.Status_Agendamento = 'REALIZADO'
+GROUP BY m.Nome_Medico
+ORDER BY Total_Faturado DESC;
+
+
+
+SELECT 
+    a.id_agendamento,
+    a.Data_Hora_Consulta,
+    a.Status_Agendamento,
+    m.Nome_Medico,
+    e.Nome_Especialidades,
+    p.Nome_Pacientes,
+    c.Nome_Consultorios,
+    pr.Nome_Procedimentos,
+    pr.Valor_Procedimentos
+FROM Agendamentos a
+JOIN Medicos m ON a.id_medico = m.id_medico
+JOIN Especialidades e ON m.id_especialidade = e.id_especialidade
+JOIN Pacientes p ON a.id_paciente = p.id_paciente
+JOIN Consultorios c ON a.consultorios_idconsultorios = c.idconsultorios
+JOIN Procedimentos pr ON a.procedimentos_idprocedimentos = pr.idprocedimentos;
+
+
+
+
+
+
