@@ -1,0 +1,61 @@
+INSERT INTO especialidades (nome) VALUES
+('Clínico Geral'),
+('Cardiologia'),
+('Pediatria'),
+('Ortopedia'),
+('Dermatologia');
+
+INSERT INTO medicos (nome, crm, id_especialidade) VALUES
+('Dr. João Silva', '12345', 1), -- Clínico Geral
+('Dra. Ana Costa', '23456', 2), -- Cardiologia
+('Dr. Pedro Lima', '34567', 3), -- Pediatria
+('Dra. Carla Souza', '45678', 4), -- Ortopedia
+('Dr. Marcos Ferreira', '56789', 5); -- Dermatologia
+
+
+INSERT INTO pacientes (nome, cpf, data_nascimento, telefone) VALUES
+('Maria Oliveira', '111.111.111-11', '1990-05-10', '51999990001'),
+('Carlos Pereira', '222.222.222-22', '1985-08-20', '51999990002'),
+('Juliana Santos', '333.333.333-33', '2000-01-15', '51999990003'),
+('Roberto Almeida', '444.444.444-44', '1975-12-30', '51999990004'),
+('Fernanda Lima', '555.555.555-55', '1995-07-22', '51999990005');
+
+
+INSERT INTO consultorios (numero, descricao) VALUES
+('101', 'Consultório geral'),
+('102', 'Consultório cardiologia'),
+('103', 'Consultório pediatria'),
+('201', 'Consultório ortopedia'),
+('202', 'Consultório dermatologia');
+
+
+INSERT INTO procedimentos (nome, valor) VALUES
+('Consulta clínica', 150.00),
+('Consulta cardiológica', 200.00),
+('Consulta pediátrica', 180.00),
+('Avaliação ortopédica', 220.00),
+('Consulta dermatológica', 190.00);
+
+
+INSERT INTO agendamentos (
+    id_paciente,
+    id_medico,
+    id_consultorio,
+    id_procedimento,
+    data_agendamento,
+    status
+) VALUES
+(1, 1, 1, 1, '2026-03-20 08:00', 'Agendado'),
+(2, 2, 2, 2, '2026-03-20 09:30', 'Agendado'),
+(3, 3, 3, 3, '2026-03-20 10:00', 'Concluído'),
+(4, 4, 4, 4, '2026-03-21 14:00', 'Agendado'),
+(5, 5, 5, 5, '2026-03-21 15:30', 'Cancelado');
+
+
+
+
+
+
+
+
+
