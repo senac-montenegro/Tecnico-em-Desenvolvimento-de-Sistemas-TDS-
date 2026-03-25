@@ -1,0 +1,148 @@
+SCRIPTS - Abertura de Filiais
+
+INSERT INTO public.localizacao (cidade, bairro, estado, regiao, acessibilidade)
+VALUES
+('São Paulo', 'Pinheiros', 'SP', 'Sudeste', 'Alta'),
+('Rio de Janeiro', 'Copacabana', 'RJ', 'Sudeste', 'Média'),
+('Curitiba', 'Batel', 'PR', 'Sul', 'Alta'),
+('Salvador', 'Itapuã', 'BA', 'Nordeste', 'Média'),
+('Belo Horizonte', 'Savassi', 'MG', 'Sudeste', 'Alta'),
+('Manaus', 'Adrianópolis', 'AM', 'Norte', 'Baixa'),
+('Brasília', 'Asa Sul', 'DF', 'Centro-Oeste', 'Alta'),
+('Fortaleza', 'Meireles', 'CE', 'Nordeste', 'Média'),
+('Porto Alegre', 'Moinhos de Vento', 'RS', 'Sul', 'Alta'),
+('Recife', 'Boa Viagem', 'PE', 'Nordeste', 'Média');
+
+INSERT INTO public.dados_demograficos (populacao, renda_media, faixa_etaria_predominante, poder_compra, id_localizacao)
+VALUES
+(12300000, 4500.50, '25-40 anos', 'Alto', 1),   -- Referente a SP
+(6700000, 3800.00, '30-50 anos', 'Médio', 2),  -- Referente a RJ
+(1900000, 5200.75, '20-35 anos', 'Alto', 3),   -- Referente a Curitiba
+(2800000, 2400.00, '18-45 anos', 'Baixo', 4),  -- Referente a Salvador
+(2500000, 4100.20, '25-45 anos', 'Médio', 5),  -- Referente a BH
+(2200000, 2900.00, '15-30 anos', 'Baixo', 6),  -- Referente a Manaus
+(3000000, 7500.00, '30-60 anos', 'Alto', 7),   -- Referente a Brasília
+(2600000, 2700.50, '20-40 anos', 'Médio', 8),  -- Referente a Fortaleza
+(1400000, 4800.00, '35-65 anos', 'Alto', 9),   -- Referente a Porto Alegre
+(1600000, 3100.00, '25-50 anos', 'Médio', 10); -- Referente a Recife
+
+INSERT INTO public.concorrente (nome, tipo, nivel_concorrencia, id_localizacao)
+VALUES
+('Supermercado Alvorada', 'Varejo', 'Alto', 1),        -- SP
+('Farmácia Central', 'Saúde', 'Médio', 2),             -- RJ
+('Academia Iron', 'Serviços', 'Baixo', 3),             -- Curitiba
+('Loja de Roupas Estilo', 'Vestuário', 'Médio', 4),    -- Salvador
+('Restaurante Sabor Mineiro', 'Alimentação', 'Alto', 5), -- BH
+('Oficina do Norte', 'Serviços', 'Baixo', 6),          -- Manaus
+('Livraria do Lago', 'Cultura', 'Médio', 7),           -- Brasília
+('Padaria Pão de Mel', 'Alimentação', 'Alto', 8),      -- Fortaleza
+('Bazar dos Pampas', 'Varejo', 'Médio', 9),            -- Porto Alegre
+('Sorveteria Recife', 'Alimentação', 'Baixo', 10);     -- Recife
+
+INSERT INTO public.filial (nome, status, data_abertura_prevista, investimento_estimado, roi_previsto, id_localizacao)
+VALUES
+('Filial São Paulo - Centro', 'Ativa', '2024-05-15', 550000.00, 15.50, 1),
+('Filial Rio - Orla', 'Planejamento', '2024-12-01', 720000.00, 12.20, 2),
+('Filial Curitiba - Batel', 'Ativa', '2023-10-20', 480000.00, 18.00, 3),
+('Filial Salvador - Pelô', 'Suspenso', '2025-01-10', 310000.00, 9.50, 4),
+('Filial BH - Savassi', 'Ativa', '2024-02-28', 450000.00, 14.75, 5),
+('Filial Manaus - Industrial', 'Planejamento', '2025-06-15', 600000.00, 20.00, 6),
+('Filial Brasília - Esplanada', 'Ativa', '2023-08-12', 850000.00, 11.00, 7),
+('Filial Fortaleza - Praia', 'Ativa', '2024-01-05', 400000.00, 13.40, 8),
+('Filial Porto Alegre - Sul', 'Planejamento', '2024-11-20', 520000.00, 16.20, 9),
+('Filial Recife - Porto', 'Ativa', '2023-12-15', 380000.00, 14.00, 10);
+
+INSERT INTO public.custo (tipo_custo, valor, periodicidade, id_filial)
+VALUES
+('Aluguel Comercial', 12000.00, 'Mensal', 1),
+('Marketing Digital', 5000.00, 'Mensal', 1),
+('Manutenção Predial', 1500.00, 'Trimestral', 2),
+('Segurança', 3200.00, 'Mensal', 3),
+('Limpeza e Conservação', 2100.00, 'Mensal', 4),
+('Logística', 8500.00, 'Mensal', 5),
+('Energia Elétrica', 4200.00, 'Mensal', 6),
+('Taxas Municipais', 1200.00, 'Anual', 7),
+('Seguro Patrimonial', 6000.00, 'Anual', 8),
+('Internet e TI', 950.00, 'Mensal', 9),
+
+INSERT INTO public.analise_viabilidade (roi_estimado, risco_estimado, ranking, recomendacao, id_filial)
+VALUES
+(18.50, 'Baixo', 1, 'Aprovar', 1),   -- São Paulo
+(11.20, 'Alto', 8, 'Aguardar', 2),   -- Rio
+(20.00, 'Baixo', 2, 'Aprovar', 3),   -- Curitiba
+(8.00,  'Muito Alto', 10, 'Rejeitar', 4), -- Salvador
+(15.75, 'Médio', 4, 'Aprovar', 5),   -- BH
+(22.10, 'Médio', 3, 'Aprovar', 6),   -- Manaus
+(10.50, 'Médio', 7, 'Monitorar', 7), -- Brasília
+(14.00, 'Baixo', 5, 'Aprovar', 8),   -- Fortaleza
+(16.30, 'Baixo', 6, 'Aprovar', 9),   -- Porto Alegre
+(13.80, 'Médio', 9, 'Monitorar', 10); -- Recife
+
+INSERT INTO public.analise_viabilidade (roi_estimado, risco_estimado, ranking, recomendacao, id_filial)
+VALUES
+(18.50, 'Baixo', 1, 'Aprovar', 1),   -- São Paulo
+(11.20, 'Alto', 8, 'Aguardar', 2),   -- Rio
+(20.00, 'Baixo', 2, 'Aprovar', 3),   -- Curitiba
+(8.00,  'Muito Alto', 10, 'Rejeitar', 4), -- Salvador
+(15.75, 'Médio', 4, 'Aprovar', 5),   -- BH
+(22.10, 'Médio', 3, 'Aprovar', 6),   -- Manaus
+(10.50, 'Médio', 7, 'Monitorar', 7), -- Brasília
+(14.00, 'Baixo', 5, 'Aprovar', 8),   -- Fortaleza
+(16.30, 'Baixo', 6, 'Aprovar', 9),   -- Porto Alegre
+(13.80, 'Médio', 9, 'Monitorar', 10); -- Recife
+
+
+Mostrar dados com select:
+
+SELECT
+    f.nome AS nome_filial,
+    l.cidade
+FROM
+    public.filial f
+JOIN
+    public.localizacao l ON f.id_localizacao = l.id_localizacao;
+
+
+
+SELECT
+    f.nome AS nome_filial,
+    l.cidade AS nome_cidade,
+    c.nome AS nome_concorrente
+FROM
+    public.filial f
+JOIN
+    public.localizacao l ON f.id_localizacao = l.id_localizacao
+LEFT JOIN
+    public.concorrente c ON c.id_localizacao = l.id_localizacao;
+
+
+
+SELECT
+    f.nome AS nome_filial,
+    l.cidade,
+    d.populacao
+FROM
+    public.filial f
+JOIN
+    public.localizacao l ON f.id_localizacao = l.id_localizacao
+JOIN
+    public.dados_demograficos d ON l.id_localizacao = d.id_localizacao;
+
+('Treinamento', 3000.00, 'Semestral', 10);
+
+SELECT
+    l.cidade,
+    l.estado,
+    COUNT(c.id_concorrente) AS total_concorrentes,
+    AVG(d.renda_media) AS media_renda_regiao,
+    SUM(d.populacao) AS populacao_total
+FROM
+    public.localizacao l
+JOIN
+    public.dados_demograficos d ON l.id_localizacao = d.id_localizacao
+LEFT JOIN
+    public.concorrente c ON l.id_localizacao = c.id_localizacao
+GROUP BY
+    l.cidade, l.estado
+ORDER BY
+    media_renda_regiao DESC;
