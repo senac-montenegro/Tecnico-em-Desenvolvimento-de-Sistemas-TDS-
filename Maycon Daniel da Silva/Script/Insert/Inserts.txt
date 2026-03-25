@@ -1,0 +1,62 @@
+INSERT INTO Especialidades (Nome_Especialidades) VALUES
+('Cardiologia'),
+('Ortopedia'),
+('Dermatologia'),
+('Clínico Geral'),
+('Pediatria');
+
+INSERT INTO Medicos (Nome_Medico, CRM_Medicos, id_especialidade) VALUES
+('Dr. João Martins', 'CRM1001', 1),
+('Dra. Paula Souza', 'CRM1002', 2),
+('Dr. Ricardo Alves', 'CRM1003', 3),
+('Dra. Fernanda Lima', 'CRM1004', 4),
+('Dr. Gustavo Rocha', 'CRM1005', 5);
+
+
+INSERT INTO Pacientes (Nome_Pacientes, CPF_pacientes, DataNascimento_Pacientes) VALUES
+('Lucas Andrade', '111.111.111-11', '1995-02-10'),
+('Mariana Costa', '222.222.222-22', '1988-07-15'),
+('Pedro Henrique', '333.333.333-33', '2001-11-03'),
+('Juliana Mendes', '444.444.444-44', '1993-09-21'),
+('Rafael Santos', '555.555.555-55', '1985-01-30'),
+('Carla Dias', '666.666.666-66', '1999-04-12'),
+('Bruno Almeida', '777.777.777-77', '1978-12-05');
+
+
+INSERT INTO Consultorios
+(Nome_Consultorios, Numero_Consultorios, Descricao_Consultorios, Ativo_Status_Consultorios)
+VALUES
+('Consultório 1', '161', 'Sala com ECG', TRUE),
+('Consultório 2', '102', 'Sala ortopédica', TRUE),
+('Consultório 3', '103', 'Sala dermatológica', TRUE),
+('Consultório 4', '104', 'Clínico geral', TRUE),
+('Consultório 5', '105', 'Sala pediátrica', TRUE);
+
+INSERT INTO Procedimentos 
+(Nome_Procedimentos, Valor_Procedimentos, Descricao_Procedimentos, Ativo_Status_Procedimentos)
+VALUES
+('Consulta Cardiológica', 250.00, 'Consulta especializada em coração', TRUE),
+('Consulta Ortopédica', 200.00, 'Avaliação ortopédica', TRUE),
+('Consulta Dermatológica', 180.00, 'Avaliação da pele', TRUE),
+('Consulta Clínica Geral', 150.00, 'Consulta geral', TRUE),
+('Consulta Pediátrica', 220.00, 'Atendimento infantil', TRUE);
+
+INSERT INTO Agendamentos
+(Data_Hora_Consulta, Status_Agendamento,
+ id_medico, id_paciente,
+ consultorios_idconsultorios,
+ procedimentos_idprocedimentos)
+VALUES
+('2026-03-10 09:00:00', 'REALIZADO', 1, 1, 1, 1),
+('2026-03-10 10:00:00', 'REALIZADO', 2, 2, 2, 2),
+('2026-03-10 11:00:00', 'REALIZADO', 3, 3, 3, 3),
+('2026-03-10 14:00:00', 'AGENDADO', 4, 4, 4, 4),
+('2026-03-10 15:00:00', 'AGENDADO', 5, 5, 5, 5);
+
+
+
+
+
+
+
+

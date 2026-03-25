@@ -1,0 +1,36 @@
+algoritmo "Analise_de_Expansao"
+// Descricao   : Analisa se uma cidade é viável para uma nova filial
+// Autor(a)    : Yasmin Nicole Cavalheiro da Silva
+// Data atual  : 24/03/2026
+
+var
+   nome: caractere
+   populacao: inteiro
+   renda: real
+
+inicio
+   escreval("=== SISTEMA DE ANÁLISE DE EXPANSÃO ===")
+
+   escreva("Digite o nome da cidade: ")
+   leia(nome)
+
+   escreva("Digite a população da região: ")
+   leia(populacao)
+
+   escreva("Digite a renda média mensal (R$): ")
+   leia(renda)
+
+   escreval("")
+   escreval("--- PROCESSANDO RESULTADO ---")
+
+   se (populacao > 50000) e (renda > 3000) entao
+      escreval("VEREDITO para ", nome, ": INVESTIMENTO RECOMENDADO!")
+      escreval("Motivo: Mercado com alto potencial de consumo.")
+   senao
+      escreval("VEREDITO para ", nome, ": INVESTIMENTO ARRISCADO.")
+      escreval("Motivo: Indicadores abaixo do mínimo de segurança.")
+   fimse
+
+   escreval("========================================")
+
+fimalgoritmo
