@@ -1,0 +1,128 @@
+algoritmo "AgendamentoClinicaCompleto"
+// Descrição   : Agendamento com validação de Data, Hora e Médico
+// Plataforma  : VisuAlg 3.0
+
+var
+   // Vetores para simular o Banco de Dados
+   pacientes: vetor [1..50] de caractere
+   dias: vetor [1..50] de inteiro
+   meses: vetor [1..50] de inteiro
+   anos: vetor [1..50] de inteiro
+   horarios: vetor [1..50] de caractere
+   medicos_vinc: vetor [1..50] de inteiro
+   
+   // Dados Fixos da Clínica
+   medicos: vetor [1..4] de caractere
+   especialidades: vetor [1..4] de caractere
+   
+   // Variáveis de entrada e controle
+   opcao, total, i, id_m: inteiro
+   d_p, m_p, a_p: inteiro
+   nome_p, hora_p: caractere
+   conflito: logico
+
+inicio
+   // Cadastro inicial de médicos e especialidades
+   medicos[1] <- "Dr. Joao Martins"
+   especialidades[1] <- "Cardiologia"
+   medicos[2] <- "Dra. Paula Souza"
+   especialidades[2] <- "Ortopedia"
+   medicos[3] <- "Dr. Ricardo Alves"
+   especialidades[3] <- "Dermatologia"
+   medicos[4] <- "Dra. Fernanda Lima"
+   especialidades[4] <- "Clinico Geral"
+   
+   total <- 0
+   opcao <- 0
+
+   enquanto opcao <> 3 faca
+      escreval("")
+      escreval("=========================================")
+      escreval("   SISTEMA DE AGENDAMENTO MEDICO")
+      escreval("=========================================")
+      escreval("1 - Novo Agendamento")
+      escreval("2 - Listar Agenda Completa")
+      escreval("3 - Sair")
+      escreva("Escolha uma opcao: ")
+      leia(opcao)
+      limpatela
+
+      escolha opcao
+      caso 1
+         se total >= 50 entao
+            escreval("AVISO: Agenda da clinica esta lotada!")
+         senao
+            escreval("--- DADOS DO PACIENTE ---")
+            escreva("Nome: ")
+            leia(nome_p)
+            
+            escreval("")
+            escreval("--- SELECAO DE MEDICO ---")
+            para i de 1 ate 4 faca
+               escreval(i, " - ", medicos[i], " (", especialidades[i], ")")
+            fimpara
+            escreva("Digite o numero do medico: ")
+            leia(id_m)
+            
+            escreval("")
+            escreval("--- DATA E HORA ---")
+            escreva("Dia (1-31): ")
+            leia(d_p)
+            escreva("Mes (1-12): ")
+            leia(m_p)
+            escreva("Ano (ex: 2024): ")
+            leia(a_p)
+            escreva("Horario (ex: 14:30): ")
+            leia(hora_p)
+            
+            // --- LOGICA DE VERIFICACAO DE CONFLITO ---
+            conflito <- falso
+            para i de 1 ate total faca
+               // Verifica se TODOS os critérios coincidem para o mesmo médico
+               se (dias[i] = d_p) e (meses[i] = m_p) e (anos[i] = a_p) e (horarios[i] = hora_p) e (medicos_vinc[i] = id_m) entao
+                  conflito <- verdadeiro
+               fimse
+            fimpara
+            
+            se conflito entao
+               escreval("")
+               escreval("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+               escreval("ERRO: O ", medicos[id_m], " ja possui uma consulta")
+               escreval("marcada para o dia ", d_p, "/", m_p, "/", a_p, " as ", hora_p)
+               escreval("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            senao
+               // Se não houver conflito, salva no "Banco de Dados"
+               total <- total + 1
+               pacientes[total] <- nome_p
+               dias[total] <- d_p
+               meses[total] <- m_p
+               anos[total] <- a_p
+               horarios[total] <- hora_p
+               medicos_vinc[total] <- id_m
+               
+               escreval("")
+               escreval("SUCESSO: Agendamento realizado para ", nome_p)
+            fimse
+         fimse
+         
+      caso 2
+         escreval("=========================================")
+         escreval("          AGENDA DE CONSULTAS")
+         escreval("=========================================")
+         
+         se total = 0 entao
+            escreval("Nenhum agendamento registrado.")
+         senao
+            para i de 1 ate total faca
+               escreva("DATA: ", dias[i], "/", meses[i], "/", anos[i])
+               escreva(" as ", horarios[i])
+               escreva(" | PACIENTE: ", pacientes[i])
+               escreval(" | MEDICO: ", medicos[medicos_vinc[i]])
+            fimpara
+         fimse
+         escreval("=========================================")
+         
+      fimescolha
+   fimenquanto
+
+fimalgoritmo
