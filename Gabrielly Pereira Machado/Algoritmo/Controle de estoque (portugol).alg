@@ -35,7 +35,7 @@ enquanto continuar <> "N" faca
   escreva("Categoria: ")
   leia(categoria[i])
 
-  escreva("Preco: ")
+  escreva("Preço: ")
   leia(preco[i])
 
   escreval("Produto cadastrado com sucesso!")
@@ -50,14 +50,14 @@ enquanto continuar <> "N" faca
   leia(qtd_compra[i])
 
   enquanto qtd_compra[i] < 0 faca
-     escreva("Valor invalido! Digite novamente: ")
+     escreva("Valor inválido! Digite novamente: ")
      leia(qtd_compra[i])
   fimenquanto
 
   escreval("Compra registrada!")
 
   escreval("")
-  escreval(">>> DISTRIBUICAO PARA FILIAL <<<")
+  escreval(">>> DISTRIBUIÇÃO PARA FILIAL <<<")
 
   escreva("Nome da filial: ")
   leia(filial[i])
@@ -70,7 +70,7 @@ enquanto continuar <> "N" faca
      leia(qtd_distribuicao[i])
   fimenquanto
 
-  // C�lculo de estoque final
+  // Cálculo de estoque final
   estoque_final[i] <- qtd_compra[i] - qtd_distribuicao[i]
 
   escreval("Distribuicao registrada!")
@@ -88,17 +88,17 @@ total <- i - 1
 
 escreval("")
 escreval("========================================")
-escreval("           RELATORIO FINAL")
+escreval("           RELATÓRIO FINAL")
 escreval("========================================")
 
 para i <- 1 ate total faca
 escreval("Produto: ", nome_produto[i])
 escreval("Categoria: ", categoria[i])
-escreval("Preco: R$ ", preco[i]:0:2)
+escreval("Preço: R$ ", preco[i]:0:2)
 escreval("Fornecedor: ", fornecedor[i])
-escreval("Qtd Comprada: ", qtd_compra[i])
+escreval("Quantidade Comprada: ", qtd_compra[i])
 escreval("Filial: ", filial[i])
-escreval("Qtd Distribuida: ", qtd_distribuicao[i])
+escreval("Quantidade Distribuida: ", qtd_distribuicao[i])
 escreval("Estoque Final: ", estoque_final[i])
 escreval("----------------------------------------")
 fimpara
