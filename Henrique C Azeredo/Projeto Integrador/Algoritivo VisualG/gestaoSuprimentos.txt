@@ -1,0 +1,98 @@
+Algoritmo "Gestao_Suprimentos_Final"
+// Foco: Otimização de estoque e classificação de giro
+// Descrição: Permite registrar entradas e saídas para evitar ruptura
+
+Var
+   nomes       : vetor [1..5] de caractere
+   estoque     : vetor [1..5] de inteiro
+   cont_saidas : vetor [1..5] de inteiro
+   giro_status : vetor [1..5] de caractere
+
+   opcao, i, id, qtd : inteiro
+
+Inicio
+   // Inicialização dos dados da farmácia de bairro
+   nomes[1] <- "Novalgina 500mg"  ; estoque[1] <- 50 ; cont_saidas[1] <- 0
+   nomes[2] <- "Dipirona Ger."    ; estoque[2] <- 40 ; cont_saidas[2] <- 0
+   nomes[3] <- "Sabonete Dove"    ; estoque[3] <- 30 ; cont_saidas[3] <- 0
+   nomes[4] <- "Vitamina C"       ; estoque[4] <- 20 ; cont_saidas[4] <- 0
+   nomes[5] <- "Buscopan Comp."   ; estoque[5] <- 15 ; cont_saidas[5] <- 0
+
+   repita
+      escreval("===============================================")
+      escreval("   CONTROLE DE CADEIA DE SUPRIMENTOS")
+      escreval("===============================================")
+      escreval("1 - Registrar SAÍDA (Uso/Consumo)")
+      escreval("2 - Analisar GIRO e ALERTAS")
+      escreval("3 - Registrar ENTRADA (Reposição)")
+      escreval("4 - Inventário Geral")
+      escreval("5 - Sair")
+      escreva("Escolha uma opção: ")
+      leia(opcao)
+      limpatela
+
+      escolha opcao
+      caso 1 // Registro de Saídas
+         escreval("--- REGISTRAR SAÍDA ---")
+         escreva("ID do produto (1-5): ")
+         leia(id)
+         se (id >= 1) e (id <= 5) entao
+            escreva("Quantidade de saída: ")
+            leia(qtd)
+            se estoque[id] >= qtd entao
+               estoque[id] <- estoque[id] - qtd
+               cont_saidas[id] <- cont_saidas[id] + qtd
+               escreval("Saída de ", nomes[id], " registrada!")
+            senao
+               escreval("ERRO: Estoque insuficiente!")
+            fimse
+         senao
+            escreval("ID inválido!")
+         fimse
+
+      caso 2 // Classificação por giro e alertas
+         escreval("--- ANÁLISE DE GIRO E SUPRIMENTOS ---")
+         para i de 1 ate 5 faca
+            se cont_saidas[i] >= 10 entao
+               giro_status[i] <- "ALTO"
+            senao
+               giro_status[i] <- "BAIXO"
+            fimse
+
+            escreva(nomes[i]:18, " | Giro: ", giro_status[i])
+
+            // Alerta de ruptura: Alto giro com pouco estoque
+            se (giro_status[i] = "ALTO") e (estoque[i] < 10) entao
+               escreva(" -> [ALERTA: REPOR IMEDIATAMENTE!]")
+            fimse
+
+            // Alerta de super-estoque: Baixo giro parado
+            se (giro_status[i] = "BAIXO") e (estoque[i] > 40) entao
+               escreva(" -> [ALERTA: EVITAR COMPRA/PROMOVER!]")
+            fimse
+            escreval("")
+         fimpara
+
+      caso 3 // Registro de Entradas
+         escreval("--- REGISTRAR ENTRADA (REPOSIÇÃO) ---")
+         escreva("ID do produto (1-5): ")
+         leia(id)
+         se (id >= 1) e (id <= 5) entao
+            escreva("Quantidade recebida: ")
+            leia(qtd)
+            estoque[id] <- estoque[id] + qtd
+            escreval("Estoque atualizado! ", nomes[id], " agora tem ", estoque[id], " unidades.")
+         senao
+            escreval("ID inválido!")
+         fimse
+
+      caso 4 // Inventário para evitar extravios
+         escreval("--- INVENTÁRIO ATUAL ---")
+         escreval("ID | PRODUTO            | ESTOQUE FÍSICO")
+         para i de 1 ate 5 faca
+            escreval(i, "  | ", nomes[i]:18, " | ", estoque[i])
+         fimpara
+      fimescolha
+      escreval("")
+   ate opcao = 5
+Fimalgoritmo
